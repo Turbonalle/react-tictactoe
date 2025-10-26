@@ -52,10 +52,10 @@ function Board({xIsNext, squares, onPlay}: BoardProps) {
   }
 
   const winnerInfo = calculateWinner(squares);
-  const winningSquares = winnerInfo ? winnerInfo.line : [];
+  const winningSquares: number[] = winnerInfo ? winnerInfo.line : [];
   const status = winnerInfo
     ? `Winner: ${winnerInfo.winner}`
-    : `Next player: " + ${xIsNext ? "X" : "O"}`;
+    : `Next player: ${xIsNext ? "X" : "O"}`;
 
   const rows = [];
   for (let row = 0; row < 3; row++) {
@@ -101,7 +101,7 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((squares, move) => {
+  const moves = history.map((_, move) => {
     if (move === currentMove) {
       return (
         <li key={move}>
